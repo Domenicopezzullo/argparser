@@ -1,4 +1,4 @@
-use argparser_lib::{FlagType, Parser};
+use argparser::{FlagType, Parser};
 
 fn main() {
     let mut parser = Parser::new();
