@@ -46,13 +46,11 @@ impl<'a> ArgumentParser<'a> {
                     results.insert(option.name, option.default.to_string());
                     i += 1;
                 }
-            } else if let Some(flag) = self.flags.iter().find(|f| f.name == args[i].trim_start_matches("")) {
+            } else if let Some(flag) = self.flags.iter().find(|f| f.name == args[i].trim_start_matches("-")) {
                 results.insert(flag.name, "true".to_string());
                 i += 1;
             }
-            i += 1;
         }
-
         Ok(results)
     }
 }
