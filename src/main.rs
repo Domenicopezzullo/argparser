@@ -1,13 +1,9 @@
-use argparser::{FlagType, Parser};
+use argparser::ArgumentParser;
 
 fn main() {
-    let mut parser = Parser::new();
-    parser.add_flag(
-        "hi".to_string(),
-        "no".to_string(),
-        "no".to_string(),
-        FlagType::STRING,
-    );
-    let a = parser.parse().unwrap();
-    println!("{}", a.get("hi").unwrap());
+    let mut parser = ArgumentParser::default();
+    parser.add_option("test", "no", "false");
+
+    let parsed = parser.parse().unwrap();
+    println!("{}", parsed["test"]);
 }
