@@ -38,7 +38,11 @@ impl<'a> ArgumentParser<'a> {
         let args: Vec<String> = env::args().collect();
         let mut i = 1;
         while i < args.len() {
-            if let Some(option) = self.options.iter().find(|o| o.name == args[i].trim_start_matches("-")) {
+            if let Some(option) = self
+                .options
+                .iter()
+                .find(|o| o.name == args[i].trim_start_matches("-"))
+            {
                 if i + 1 < args.len() {
                     results.insert(option.name, args[i + 1].clone());
                     i += 2;
@@ -46,7 +50,11 @@ impl<'a> ArgumentParser<'a> {
                     results.insert(option.name, option.default.to_string());
                     i += 1;
                 }
-            } else if let Some(flag) = self.flags.iter().find(|f| f.name == args[i].trim_start_matches("-")) {
+            } else if let Some(flag) = self
+                .flags
+                .iter()
+                .find(|f| f.name == args[i].trim_start_matches("-"))
+            {
                 results.insert(flag.name, "true".to_string());
                 i += 1;
             }
